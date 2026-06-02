@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Genix para ti - Tu supermercado inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a2a32 0%, #0f1e24 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #fef9e8 0%, #fff5e6 100%);
+            border-radius: 48px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,245,215,0.6) inset;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 24px 20px 20px 20px;
+        }
+
+        .infographic::-webkit-scrollbar {
+            width: 4px;
+        }
+        .infographic::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+        .infographic::-webkit-scrollbar-thumb {
+            background: #f5a65b;
+            border-radius: 10px;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .badge {
+            background: #f5a65b20;
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #c25d2e;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2c553d, #e0873a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+        }
+        .sub {
+            font-size: 14px;
+            font-weight: 500;
+            color: #5a4a3a;
+            margin-top: 6px;
+        }
+        .tagline {
+            font-size: 12px;
+            background: #f0e2ce;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #b45f2b;
+        }
+
+        /* Hero - teléfono mockup */
+        .phone-mock {
+            background: #1e1e2a;
+            border-radius: 42px;
+            padding: 14px 10px;
+            margin: 10px 0 18px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(255,210,140,0.3);
+        }
+        .screen {
+            background: #fef7e6;
+            border-radius: 32px;
+            padding: 14px 12px;
+        }
+        .feature-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 12px;
+        }
+        .feature-icons span {
+            background: white;
+            border-radius: 50px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #2c553d;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .wishlist-demo {
+            background: white;
+            border-radius: 24px;
+            padding: 12px;
+            margin: 6px 0;
+        }
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 12px;
+        }
+        .total-box {
+            background: #e0873a;
+            color: white;
+            border-radius: 28px;
+            padding: 12px;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        /* Beneficios principales (cards) */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 18px 0 16px;
+        }
+        .benefit-card {
+            background: rgba(255,248,235,0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            border: 0.5px solid rgba(224,135,58,0.2);
+        }
+        .benefit-icon {
+            font-size: 26px;
+            margin-bottom: 6px;
+        }
+        .benefit-title {
+            font-weight: 800;
+            font-size: 13px;
+            color: #2c553d;
+        }
+        .benefit-desc {
+            font-size: 10px;
+            color: #6b5a4a;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        /* Calculadora mágica destacada */
+        .magic-calc {
+            background: linear-gradient(115deg, #2c553d, #e0873a);
+            border-radius: 28px;
+            padding: 14px;
+            margin: 12px 0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .magic-calc span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .currency {
+            background: rgba(255,255,200,0.2);
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 12px;
+        }
+
+        /* stats final usuario */
+        .user-stats {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 14px 0;
+        }
+        .stat-circle {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 20px;
+            font-weight: 800;
+            background: #f0e2ce;
+            padding: 8px 12px;
+            border-radius: 32px;
+            color: #c25d2e;
+        }
+        .small-note {
+            font-size: 9px;
+            text-align: center;
+            margin-top: 12px;
+            color: #8f735a;
+        }
+
+        /* footer */
+        .footer-note {
+            background: #e6d5c0;
+            border-radius: 28px;
+            padding: 12px;
+            margin-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .qr-sim {
+            background: #2c553d;
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="infographic">
+
+    <!-- HEADER amigable -->
+    <div class="header">
+        <div class="badge"><i class="fas fa-store"></i> PARA TI · CLIENTE FINAL</div>
+        <div class="title">Genix</div>
+        <div class="sub">Tu asistente de compras inteligente</div>
+        <div class="tagline"><i class="fas fa-mobile-alt"></i> Sin app que instalar · Funciona en tu navegador</div>
+    </div>
+
+    <!-- SIMULACIÓN DE TELÉFONO CON LA EXPERIENCIA -->
+    <div class="phone-mock">
+        <div class="screen">
+            <div class="feature-icons">
+                <span><i class="fas fa-microphone"></i> Voz</span>
+                <span><i class="fas fa-camera"></i> Escáner</span>
+                <span><i class="fas fa-chart-line"></i> Modo inflación</span>
+            </div>
+            <div class="wishlist-demo">
+                <div style="font-weight:700; font-size:12px;"><i class="fas fa-list"></i> Mi lista de compras</div>
+                <div class="item-row"><span>🥛 Leche 1L</span><span>$1.20</span></div>
+                <div class="item-row"><span>🍞 Pan integral</span><span>$0.90</span></div>
+                <div class="item-row"><span>🧀 Queso rallado</span><span>$2.30</span></div>
+                <div class="item-row"><span>🍎 Manzanas (3)</span><span>$1.50</span></div>
+                <div class="total-box">
+                    <i class="fas fa-calculator"></i> Total estimado: $5.90 USD | 48.2 Bs
+                </div>
+            </div>
+            <div style="font-size:9px; text-align:center; margin-top:8px;">
+                🔄 Sincronizado en tiempo real · Precios del POS de tu supermercado
+            </div>
+        </div>
+    </div>
+
+    <!-- PANELES DE BENEFICIOS PRINCIPALES (para el cliente) -->
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+            <div class="benefit-title">Calculadora multi-moneda</div>
+            <div class="benefit-desc">USD, EUR, Bs. al instante. Sabes exacto lo que pagarás antes de llegar a caja.</div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">🎤</div>
+            <div class="benefit-title">Lista por voz</div>
+            <div class="benefit-desc">Dicta tu lista desde casa y llega sincronizada con precios reales.</div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">📉</div>
+            <div class="benefit-title">Modo Inflación</div>
+            <div class="benefit-desc">Historial de precios: ves qué subió, qué bajó. Ahorra con datos.</div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">🛒</div>
+            <div class="benefit-title">Sin sorpresas en caja</div>
+            <div class="benefit-desc">El total acumulado se actualiza mientras agregas productos. Adiós devoluciones.</div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">📸</div>
+            <div class="benefit-title">Escanea con cámara</div>
+            <div class="benefit-desc">Apuntas al código de barras y se agrega automáticamente a tu lista.</div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">👨‍👩‍👧</div>
+            <div class="benefit-title">Lista compartida</div>
+            <div class="benefit-desc">Tu familia agrega productos en tiempo real desde casa o el trabajo.</div>
+        </div>
+    </div>
+
+    <!-- DESTACADO: CALCULADORA MÁGICA + PRESUPUESTO -->
+    <div class="magic-calc">
+        <div>
+            <span><i class="fas fa-magic"></i> Calculadora Mágica</span>
+            <div style="font-size:11px; opacity:0.9;">Ajuste inteligente de presupuesto</div>
+        </div>
+        <div class="currency">USD · EUR · Bs</div>
+    </div>
+
+    <!-- STATS RÁPIDAS PARA EL USUARIO (por qué le encantará) -->
+    <div class="user-stats">
+        <div class="stat-circle">
+            <div class="stat-value">-35%</div>
+            <div style="font-size:9px;">devoluciones en caja</div>
+        </div>
+        <div class="stat-circle">
+            <div class="stat-value">9/10</div>
+            <div style="font-size:9px;">clientes lo recomiendan</div>
+        </div>
+        <div class="stat-circle">
+            <div class="stat-value">+22%</div>
+            <div style="font-size:9px;">ahorro en compras</div>
+        </div>
+    </div>
+
+    <!-- pequeño texto de recordatorio sobre ventajas clave -->
+    <div class="small-note">
+        <i class="fas fa-check-circle" style="color:#e0873a;"></i> Sin instalar nada · Solo escanea el código QR en la tienda · Tus datos seguros
+    </div>
+
+    <!-- FOOTER con llamado a la acción + simbología user friendly -->
+    <div class="footer-note">
+        <div style="font-size:11px; font-weight:600;">💡 Tip Genix:</div>
+        <div style="font-size:9px;">Usa el modo inflación y ahorra hasta un 18% en productos de alta volatilidad</div>
+        <div class="qr-sim">
+            <i class="fas fa-qrcode"></i>
+        </div>
+    </div>
+
+    <!-- pequeña línea de experiencia omnicanal -->
+    <div style="display: flex; justify-content: center; gap: 16px; margin-top: 14px; font-size: 10px; color: #7a6248;">
+        <span><i class="fas fa-chart-line"></i> Historial de precios</span>
+        <span><i class="fas fa-chart-simple"></i> Presupuesto quincenal</span>
+        <span><i class="fas fa-bell"></i> Alertas de ofertas</span>
+    </div>
+</div>
+</body>
+</html>

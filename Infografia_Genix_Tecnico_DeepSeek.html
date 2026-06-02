@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Genix - Infografía Técnica Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e8eef2 0%, #d4dce4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+
+        /* Contenedor 9:16 */
+        .infographic {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 9 / 16;
+            background: radial-gradient(circle at 20% 30%, #f5f7fa, #eef2f5);
+            border-radius: 48px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.5) inset;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 24px 20px 20px 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Scroll elegante */
+        .infographic::-webkit-scrollbar {
+            width: 4px;
+        }
+        .infographic::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+        .infographic::-webkit-scrollbar-thumb {
+            background: #2c7da0;
+            border-radius: 10px;
+        }
+
+        /* Tipografía */
+        h1, h2, h3, p {
+            letter-spacing: -0.02em;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 10;
+        }
+        .title {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0a2b3e, #1f6e8c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .sub {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e5a6e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 6px;
+        }
+        .desc {
+            font-size: 13px;
+            font-weight: 400;
+            color: #3a6b7c;
+            background: rgba(255,255,240,0.7);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            margin-top: 12px;
+        }
+
+        /* sujeto principal 3D simulado */
+        .hero {
+            background: radial-gradient(ellipse at 30% 40%, #c0e0ec, #8bbcd0);
+            border-radius: 38px;
+            padding: 20px 16px;
+            margin: 10px 0 20px 0;
+            box-shadow: 0 18px 30px -10px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.6);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .genix-core {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .orb {
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle at 30% 30%, #ffe6c7, #ffb347);
+            border-radius: 50%;
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.3), 0 0 0 5px rgba(255,215,140,0.5), inset 0 -10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        .orb i {
+            font-size: 64px;
+            color: #2c2b28;
+            text-shadow: 0 2px 4px rgba(255,215,0,0.6);
+        }
+        .tech-badge {
+            font-size: 12px;
+            font-weight: 700;
+            background: #0f2f3b;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        .hero p {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 12px;
+            color: #1f4e5e;
+            font-weight: 500;
+        }
+
+        /* PANELES (grid callouts) */
+        .panels-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 18px 0 16px;
+        }
+        .panel {
+            background: rgba(255,255,245,0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 14px 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255,255,255,0.7);
+            transition: all 0.2s;
+            border: 0.5px solid rgba(0,0,0,0.05);
+        }
+        .panel-num {
+            font-size: 24px;
+            font-weight: 800;
+            color: #2c7da0;
+            opacity: 0.5;
+            line-height: 1;
+        }
+        .panel-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 6px 0 4px;
+            color: #0b3b48;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .panel-title i {
+            color: #f09d3c;
+            font-size: 14px;
+        }
+        .panel-text {
+            font-size: 10px;
+            line-height: 1.35;
+            color: #2c4e5c;
+            font-weight: 500;
+        }
+        .zoom-detail {
+            background: #eef3fc;
+            border-radius: 16px;
+            padding: 6px 8px;
+            margin-top: 10px;
+            font-size: 9px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 3px solid #f09d3c;
+        }
+
+        /* personaje experto */
+        .expert-character {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(30,40,45,0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 8px 18px 8px 12px;
+            margin: 12px 0;
+            width: fit-content;
+            border: 1px solid rgba(255,255,200,0.6);
+        }
+        .avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(145deg, #bcbcbc, #9aaeb9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .expert-tools {
+            display: flex;
+            gap: 10px;
+            font-size: 18px;
+            color: #265e74;
+        }
+
+        /* barra inferior stats */
+        .stats-footer {
+            background: #0b2f3a;
+            border-radius: 32px;
+            padding: 14px 16px;
+            margin-top: 12px;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+        }
+        .stat-card {
+            background: rgba(255,255,240,0.12);
+            border-radius: 24px;
+            padding: 8px 12px;
+            text-align: center;
+            flex: 1;
+            min-width: 70px;
+        }
+        .stat-number {
+            font-size: 18px;
+            font-weight: 800;
+            color: #ffcd94;
+        }
+        .stat-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .comparison-thumb {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 10px;
+        }
+        .thumb-icon {
+            background: #1f6e8c;
+            border-radius: 12px;
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+        hr {
+            margin: 8px 0;
+            border-color: rgba(0,0,0,0.05);
+        }
+        .connector-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #2c7da0, transparent);
+            margin: 6px 0;
+        }
+        i, .fas, .far {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div class="infographic">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="title">GENIX</div>
+        <div class="sub">Plataforma de Orquestación Retail</div>
+        <div class="desc">Sin app · Multi-moneda · Offline-first · IA conversacional</div>
+    </div>
+
+    <!-- SUJETO PRINCIPAL (3D simulado ultrarealista) -->
+    <div class="hero">
+        <div class="genix-core">
+            <div class="orb">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span class="tech-badge"><i class="fas fa-sync-alt"></i> Híbrido + Edge Computing</span>
+            <p><strong>Arquitectura resiliente</strong> · PWA · WebSockets · PostgreSQL · Redis</p>
+        </div>
+        <div class="connector-line"></div>
+        <div style="font-size:10px; text-align:center; display:flex; justify-content:center; gap:12px;">
+            <span><i class="fas fa-mobile-alt"></i> Offline-first</span>
+            <span><i class="fas fa-chart-line"></i> Modo Inflación</span>
+            <span><i class="fas fa-calculator"></i> Multi-moneda</span>
+        </div>
+    </div>
+
+    <!-- PANELES EDUCATIVOS 6 paneles (2x3) -->
+    <div class="panels-grid">
+        <!-- panel 01 -->
+        <div class="panel">
+            <div class="panel-num">01</div>
+            <div class="panel-title"><i class="fas fa-cube"></i> Arquitectura del Sistema</div>
+            <div class="panel-text">Híbrido (funciona sin adopción total), offline-first para LATAM, servidor local autónomo.</div>
+            <div class="zoom-detail"><i class="fas fa-diagram-project"></i> Cliente-Servidor + microservicios</div>
+        </div>
+        <!-- panel 02 -->
+        <div class="panel">
+            <div class="panel-num">02</div>
+            <div class="panel-title"><i class="fas fa-chart-simple"></i> Capacidades Únicas</div>
+            <div class="panel-text">Calculadora multi-moneda (USD/EUR/Bs.), Modo Inflación, presupuesto quincenal.</div>
+            <div class="zoom-detail"><i class="fas fa-bell"></i> Ofertas instantáneas por comportamiento</div>
+        </div>
+        <!-- panel 03 -->
+        <div class="panel">
+            <div class="panel-num">03</div>
+            <div class="panel-title"><i class="fas fa-water"></i> Flujo de Datos</div>
+            <div class="panel-text">Wishlist → Precios reales desde POS → Ticket final. Alertas de abandono y sustitución.</div>
+            <div class="zoom-detail"><i class="fas fa-clock"></i> Tiempo real < 200ms</div>
+        </div>
+        <!-- panel 04 -->
+        <div class="panel">
+            <div class="panel-num">04</div>
+            <div class="panel-title"><i class="fas fa-shield-alt"></i> Seguridad y Privacidad</div>
+            <div class="panel-text">Sin PII en BD operativas, encriptación extrema, servidor autónomo por tienda.</div>
+            <div class="zoom-detail"><i class="fas fa-lock"></i> GDPR ready + datos anonimizados</div>
+        </div>
+        <!-- panel 05 -->
+        <div class="panel">
+            <div class="panel-num">05</div>
+            <div class="panel-title"><i class="fas fa-store"></i> Valor para la Cadena</div>
+            <div class="panel-text">-35% abandono en caja · datos de comportamiento · detección churn (CH_C).</div>
+            <div class="zoom-detail"><i class="fas fa-chart-line"></i> KPI: FillRate + adopción 9/10</div>
+        </div>
+        <!-- panel 06 -->
+        <div class="panel">
+            <div class="panel-num">06</div>
+            <div class="panel-title"><i class="fas fa-user-check"></i> Valor para el Cliente</div>
+            <div class="panel-text">Sin app, total exacto antes de caja, lista por voz, escaneo con cámara.</div>
+            <div class="zoom-detail"><i class="fas fa-microphone"></i> Dictado por voz + sincronización</div>
+        </div>
+    </div>
+
+    <!-- PERSONAJE EXPERTO + herramientas técnicas -->
+    <div class="expert-character">
+        <div class="avatar">
+            <i class="fas fa-user-astronaut"></i>
+        </div>
+        <div>
+            <div style="font-size:12px; font-weight:700;">Ingeniera de datos</div>
+            <div style="font-size:9px; opacity:0.7;">especialista en retail tech</div>
+        </div>
+        <div class="expert-tools">
+            <i class="fas fa-chart-line"></i>
+            <i class="fas fa-database"></i>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <i class="fas fa-tablet-alt"></i>
+            <i class="fas fa-chart-simple"></i>
+        </div>
+    </div>
+
+    <!-- BARRA INFERIOR DE ESTADÍSTICAS Y COMPARACIONES -->
+    <div class="stats-footer">
+        <div class="stat-card">
+            <div class="stat-number">-35%</div>
+            <div class="stat-label">abandono en caja</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">9/10</div>
+            <div class="stat-label">adopción cliente</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">< 200ms</div>
+            <div class="stat-label">latencia real</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">concurrencia/tienda</div>
+        </div>
+    </div>
+
+    <!-- comparación rápida + miniaturas ecosistema -->
+    <div style="display: flex; justify-content: space-between; gap: 8px; margin-top: 14px;">
+        <div style="background: #d9e6f2; border-radius: 26px; padding: 6px 12px; font-size: 9px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-charging-station"></i> vs Oracle Retail: implementación <span style="color:#c44536;">-90% costo</span>
+        </div>
+        <div style="background: #cbdde6; border-radius: 26px; padding: 6px 12px; font-size: 9px; font-weight: bold;">
+            <i class="fas fa-chart-line"></i> Modo Inflación único
+        </div>
+    </div>
+
+    <!-- pequeña línea de datos técnicos y simbología -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 18px; font-size: 8px; font-weight: 500; color: #2f596b;">
+        <span><i class="fas fa-chart-line"></i> FillRate +22%</span>
+        <span><i class="fas fa-robot"></i> Asistente IA integrado</span>
+        <span><i class="fas fa-chart-pie"></i> Retail media activable</span>
+        <span><i class="fas fa-charging-station"></i> Sin hardware extra</span>
+        <span><i class="fas fa-chart-simple"></i> CH_C detection</span>
+    </div>
+
+    <!-- micro diagrama connector line indicando integración continua -->
+    <div class="connector-line" style="margin: 12px 0 4px 0;"></div>
+    <div style="text-align: center; font-size: 7px; letter-spacing: 1px; opacity: 0.6;">ORQUESTACIÓN POS · DASHBOARD EN TIEMPO REAL · IA PREDICTIVA</div>
+
+</div>
+</body>
+</html>
