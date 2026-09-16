@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RetailMind 360° · Demos & Presentaciones</title>
+    <title>RetailMind 360° · Presentación Ejecutiva · Automercados Kalea</title>
     <link rel="shortcut icon" href="https://gestor-de-archivos.vercel.app/logos/logo-RetailMind-R-cuadrada.png" type="image/png">
     
     <!-- Fuentes: Cinzel para números (elegancia clásica) + Inter para texto -->
@@ -52,38 +52,42 @@
         }
 
         /* ============================================================
-           HEADER
+           HEADER (logo centrado y más grande)
            ============================================================ */
         .header {
-            padding: 2.5rem 2rem 1rem;
+            padding: 3rem 2rem 0.5rem;
             max-width: 1280px;
             margin: 0 auto;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
+            gap: 1.25rem;
         }
 
         .header-logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .header-logo img {
-            height: 44px;
-            width: 44px;
+            height: 88px;
+            width: 88px;
             object-fit: contain;
-            border-radius: 10px;
+            border-radius: 18px;
+            filter: drop-shadow(0 8px 24px rgba(30, 58, 138, 0.12));
         }
 
         .header-brand {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .header-brand-name {
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 800;
             letter-spacing: -0.3px;
             color: var(--text);
@@ -93,8 +97,9 @@
             font-size: 10px;
             font-weight: 600;
             color: var(--text-muted);
-            letter-spacing: 1.2px;
+            letter-spacing: 1.6px;
             text-transform: uppercase;
+            margin-top: 2px;
         }
 
         .header-badge {
@@ -122,7 +127,7 @@
         .hero {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 2rem 3rem;
+            padding: 2.5rem 2rem 3rem;
             text-align: center;
         }
 
@@ -176,8 +181,8 @@
 
         @media (max-width: 640px) {
             .grid { grid-template-columns: 1fr; padding: 0 1.25rem 3rem; }
-            .header { padding: 1.5rem 1.25rem 0.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .header-badge { align-self: flex-start; }
+            .header { padding: 2rem 1.25rem 0.5rem; }
+            .header-logo img { height: 72px; width: 72px; }
             .hero { padding: 1.5rem 1.25rem 2rem; }
         }
 
@@ -346,7 +351,7 @@
 <body>
 
     <!-- ============================================================
-         HEADER
+         HEADER (logo centrado y grande)
          ============================================================ -->
     <header class="header">
         <div class="header-logo">
@@ -366,7 +371,7 @@
          HERO
          ============================================================ -->
     <section class="hero">
-        <h1>Seis módulos. Una sola <span class="highlight">metodología de retail</span>.</h1>
+        <h1>Presentación <span class="highlight">Ejecutiva</span> para Automercados Kalea</h1>
         <p>
             Recorrido guiado por los demos del ecosistema RetailMind 360°: desde el diagnóstico estratégico
             hasta el análisis técnico de velas japonesas aplicado a operaciones.
